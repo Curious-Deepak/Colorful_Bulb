@@ -48,7 +48,9 @@ Perfect for beginners and intermediate frontend developers who want to level up 
 ```
 ## Preview
 
-![Preview of the project](<Lamp Animation/images/Glowing Bulb.png>) 
+Preview of the project 
+
+![Preview of the project](<Glowing Bulb.png>)
 
 ## Acknowledgements
 
