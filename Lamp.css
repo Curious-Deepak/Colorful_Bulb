@@ -1,0 +1,177 @@
+:root{
+    --light-color: #ffffff;
+    --toggle-off: #3a3a3a;
+    --toggle-on: linear-gradient(135deg, #00ff88, #00cc66);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    background:
+        linear-gradient(135deg, #0b0c10, #16181f);
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    overflow: hidden;
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.bulb-container{
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wire{
+    position: absolute;
+    width: 4px;
+    height: 320px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #b6b6b6e4;
+    border-radius: 2px;
+    opacity: 0.9;
+}
+
+.light{
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background: var(--light-color);
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow:
+        inset -6px -10px 20px rgba(255,255,255,0.15),
+        inset 4px 4px 10px rgba(0,0,0,0.2);
+    animation: glowPulse 4s ease-in-out infinite;
+}
+
+.light::before{
+    content: '';
+    position: absolute;
+    width: 36px;
+    height: 80px;
+    background: linear-gradient(#222, #000);
+    border-radius: 8px;
+    left: 50%;
+    top: -55px;
+    transform: translateX(-50%);
+}
+
+.light span:nth-child(1),
+.light span:nth-child(2){
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    top: -16px;
+}
+
+.light span:nth-child(1){
+    box-shadow: 20px 20px 0 10px var(--light-color);
+    border-bottom-right-radius: 40px;
+    transform: rotate(342deg);
+    left: -4px;
+}
+
+.light span:nth-child(2){
+    box-shadow: -20px 20px 0 10px var(--light-color);
+    border-bottom-left-radius: 40px;
+    transform: rotate(16deg);
+    right: -4px;
+}
+
+.light::after{
+    content: '';
+    position: absolute;
+    inset: -300%;
+    background: radial-gradient(
+        circle,
+        var(--light-color) 0%,
+        rgba(0,0,0,0) 60%
+    );
+    filter: blur(70px);
+    opacity: 0.9;
+    z-index: -1;
+    transition: all 0.4s ease;
+}
+
+@keyframes glowPulse {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.08); }
+}
+
+.settings{
+    position: absolute;
+    right: 60px;
+    top: 100px;
+    background: var(--panel-bg);
+    backdrop-filter: blur(14px);
+    border-radius: 18px;
+    padding: 22px 26px;
+    border: 1px solid var(--panel-border);
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.6),
+        inset 0 0 0 1px rgba(255,255,255,0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+h1{
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    text-align: center;
+}
+
+.toggle{
+    width: 44px;
+    height: 22px;
+    border-radius: 22px;
+    background: var(--toggle-off);
+    position: relative;
+    cursor: pointer;
+    transition: background 0.35s ease;
+}
+
+.toggle::after{
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 2px;
+    left: 2px;
+    border-radius: 50%;
+    background: #bdbdbd;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    transition: transform 0.35s ease, background 0.35s ease;
+}
+
+.toggle.on{
+    background: var(--toggle-on);
+}
+
+.toggle.on::after{
+    transform: translateX(22px);
+    background: white;
+}
+
+.toggle:hover{
+    transform: scale(1.06);
+}
