@@ -9,9 +9,7 @@ This project demonstrates how far CSS alone can be pushed to create realistic li
 - Deepak
 - Project Type : Portfolio Project
 
-```html
-<script src= "https://curious-deepak.github.io/Colorful_Bulb/"></script>
-```
+[Click - For Live Demo](https://curious-deepak.github.io/Colorful_Bulb/)
 
 
 ## Purpose of This Project
